@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="cn.golden.sample.SampleActivity">
+
+    <cn.golden.pinchzoomcanvasview.PinchZoomCanvasView
+        android:id="@+id/canvasview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <RelativeLayout
+        android:id="@+id/input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/red"
+            android:layout_toLeftOf="@+id/confirm"
+            android:padding="5dp"
+            android:background="@drawable/edit_bg"
+            android:layout_centerInParent="true"/>
+        <TextView
+            android:id="@+id/confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="确定"
+            android:padding="10dp"
+            android:textColor="@color/red"
+            android:background="@null"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        fab:menu_labels_style="@style/MenuLabelsStyle"
+        fab:menu_labels_showAnimation="@anim/jump_from_down"
+        fab:menu_labels_hideAnimation="@anim/jump_to_down"
+        fab:menu_animationDelayPerItem="0"
+        fab:menu_shadowColor="#444"
+        fab:menu_colorNormal="#1565C0"
+        fab:menu_colorPressed="#2272CD"
+        fab:menu_colorRipple="#62B2FF" >
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/pen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/pen"
+            fab:fab_label="pen"
+            style="@style/MenuButtonsStyle" />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/text"
+            fab:fab_label="text"
+            style="@style/MenuButtonsStyle" />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/rectangle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/rec"
+            fab:fab_label="rectangle"
+            style="@style/MenuButtonsStyle" />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/move"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/move"
+            fab:fab_label="move"
+            style="@style/MenuButtonsStyle" />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/undo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/undo"
+            fab:fab_label="undo"
+            style="@style/MenuButtonsStyle" />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/reset"
+            fab:fab_label="reset"
+            style="@style/MenuButtonsStyle" />
+        </com.github.clans.fab.FloatingActionMenu>
+
+
+</RelativeLayout>
