@@ -15,5 +15,5 @@ Maven:
 Gradle:
 
     dependencies {
-    compile 'com.github.chrisbanes:PhotoView:1.2.6'
+     compile 'cn.golden:pinchzoomcanvasview:0.1.0'
     }
