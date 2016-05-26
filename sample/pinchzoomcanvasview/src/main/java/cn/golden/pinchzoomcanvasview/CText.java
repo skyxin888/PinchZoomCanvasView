@@ -2,21 +2,27 @@ package cn.golden.pinchzoomcanvasview;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.text.Layout;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 
 /**
  * Created by antwan on 10/3/2015.
  */
 public class CText implements CDrawable {
     private String mText;
-    private Paint mPaint;
-    private float x, y;
+    private TextPaint mTextPaint;
+    private float x, y,mWidth;
     private int mRotDegree;
 
-    public CText(String s, float x, float y, Paint p) {
+    private int mPeddingtoRight = 10;
+
+    public CText(String s, float x, float y, TextPaint p ,float width ) {
         setText(s);
         setYcoords(y);
         setXcoords(x);
-        setPaint(p);
+        setTextPaint(p);
+        setWidth(width);
     }
 
     public void setText(String t) {
@@ -29,7 +35,7 @@ public class CText implements CDrawable {
 
     @Override
     public Paint getPaint() {
-        return mPaint;
+        return null;
     }
 
     @Override
@@ -54,12 +60,19 @@ public class CText implements CDrawable {
 
     @Override
     public void setPaint(Paint p) {
-        mPaint = p;
+
     }
 
     @Override
     public void draw(Canvas canvas) {
-        canvas.drawText(getText(), getXcoords(), getYcoords(), mPaint);
+
+        StaticLayout mTextLayout = new StaticLayout(mText, mTextPaint,(int)(getWidth()-getXcoords() - mPeddingtoRight),
+                Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
+        canvas.save();
+        canvas.translate(getXcoords(), getYcoords());
+        mTextLayout.draw(canvas);
+        canvas.restore();
+
     }
 
     @Override
@@ -70,5 +83,21 @@ public class CText implements CDrawable {
     @Override
     public void setRotation(int degree) {
         mRotDegree = degree;
+    }
+
+    public void setTextPaint(TextPaint mTextPaint) {
+        this.mTextPaint = mTextPaint;
+    }
+
+    public android.text.TextPaint getTextPaint() {
+        return mTextPaint;
+    }
+
+    public float getWidth() {
+        return mWidth;
+    }
+
+    public void setWidth(float width) {
+        this.mWidth = width;
     }
 }

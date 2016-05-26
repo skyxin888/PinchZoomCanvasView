@@ -25,6 +25,7 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -385,7 +386,7 @@ public class PinchZoomCanvasView extends ImageView implements IPhotoView {
 
     private OnKeyBoardListener onKeyBoardListener;
 
-    private Paint textPaint = new Paint();
+    private TextPaint textPaint = new TextPaint();
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -506,7 +507,7 @@ public class PinchZoomCanvasView extends ImageView implements IPhotoView {
                 }else if (penMode == TEXT) {
                     if (onKeyBoardListener != null) {
                         if (mTextExpectTouch) {
-                            currentText = new CText("", res[0], res[1], textPaint);
+                            currentText = new CText("", res[0], res[1], textPaint,getTextWidth());
                             mDrawableList.add(currentText);
                         }else {
                             currentText.setXcoords(res[0]);
@@ -558,6 +559,12 @@ public class PinchZoomCanvasView extends ImageView implements IPhotoView {
 
     }
 
+    private float getTextWidth() {
+        float drawableWidth = getDrawable().getIntrinsicWidth();
+        float totalWidth = drawableWidth/getDisplayRect().width()*getWidth();
+        float width = (totalWidth - drawableWidth)/2 +drawableWidth;
+        return width;
+    }
 
     /**
      * Retrieve the region needing to be redrawn
