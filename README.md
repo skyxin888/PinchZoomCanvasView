@@ -8,12 +8,12 @@ Maven:
     <dependency>
      <groupId>cn.golden</groupId>
      <artifactId>pinchzoomcanvasview</artifactId>
-     <version>0.1.0</version>
+     <version>0.2.0</version>
      <type>pom</type>
     </dependency>
 
 Gradle:
 
     dependencies {
-     compile 'cn.golden:pinchzoomcanvasview:0.1.0'
+     compile 'cn.golden:pinchzoomcanvasview:0.2.0'
     }
