@@ -389,6 +389,9 @@ public class PinchZoomCanvasViewAttacher implements IPhotoView, View.OnTouchList
         return (float) Math.sqrt((float) Math.pow(getValue(mSuppMatrix, Matrix.MSCALE_X), 2) + (float) Math.pow(getValue(mSuppMatrix, Matrix.MSKEW_Y), 2));
     }
 
+    public float getBaseScale() {
+        return (float) Math.sqrt((float) Math.pow(getValue(mBaseMatrix, Matrix.MSCALE_X), 2) + (float) Math.pow(getValue(mBaseMatrix, Matrix.MSKEW_Y), 2));
+    }
     @Override
     public ScaleType getScaleType() {
         return mScaleType;

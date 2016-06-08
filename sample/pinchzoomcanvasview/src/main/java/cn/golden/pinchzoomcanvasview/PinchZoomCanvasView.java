@@ -505,16 +505,16 @@ public class PinchZoomCanvasView extends ImageView implements IPhotoView {
                     }
                     currentPath.addRect(left,top,right,bottom);
                 }else if (penMode == TEXT) {
-                    if (onKeyBoardListener != null) {
-                        if (mTextExpectTouch) {
+                    if (mTextExpectTouch) {
+                        if (onKeyBoardListener != null) {
+                            textPaint.setTextSize(sp2px(mContext,16)/mAttacher.getBaseScale());
                             currentText = new CText("", res[0], res[1], textPaint,getTextWidth());
+                            onKeyBoardListener.onShowKeyBoard(res[0], res[1]);
                             mDrawableList.add(currentText);
-                        }else {
-                            currentText.setXcoords(res[0]);
-                            currentText.setYcoords(res[1]);
                         }
-                        onKeyBoardListener.onShowKeyBoard(eventX,eventY);
-
+                    } else {
+                        currentText.setXcoords(res[0]);
+                        currentText.setYcoords(res[1]);
                     }
                 }else {
                     int historySize = event.getHistorySize();
@@ -537,7 +537,7 @@ public class PinchZoomCanvasView extends ImageView implements IPhotoView {
                         currentPath.lineTo(history[0], history[1]);
                     }
                     currentPath.lineTo(res[0], res[1]);
-                    cleanDirtyRegion(res[0],res[1]);
+//                    cleanDirtyRegion(res[0],res[1]);
                 }
                 break;
             default:
@@ -583,7 +583,7 @@ public class PinchZoomCanvasView extends ImageView implements IPhotoView {
         onKeyBoardListener = listener;
     }
 
-    public void drawText(String content  ){
+    public void drawText(String content) {
         currentText.setText(content);
         invalidate();
     }
@@ -621,5 +621,11 @@ public class PinchZoomCanvasView extends ImageView implements IPhotoView {
         // return the created bitmap.
 
         return mCanvasBitmap;
+    }
+
+
+    public  int sp2px(Context context, float spValue) {
+        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (spValue * fontScale + 0.5f);
     }
 }
