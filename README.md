@@ -1,5 +1,5 @@
 # PinchZoomCanvasView
-Android canvas view with photoview
+自定义画板,支持缩放。
 
 ![](https://github.com/skyxin888/PinchZoomCanvasView/blob/master/canvasview2.gif)
 
