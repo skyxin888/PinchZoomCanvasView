@@ -27,6 +27,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.ImageView;
@@ -164,6 +165,11 @@ public class PinchZoomCanvasView extends ImageView implements IPhotoView {
     @Override
     public ScaleType getScaleType() {
         return mAttacher.getScaleType();
+    }
+
+
+    public float getBaseScale() {
+        return mAttacher.getBaseScale();
     }
 
     @Override
@@ -508,7 +514,7 @@ public class PinchZoomCanvasView extends ImageView implements IPhotoView {
                     if (mTextExpectTouch) {
                         if (onKeyBoardListener != null) {
                             textPaint.setTextSize(sp2px(mContext,16)/mAttacher.getBaseScale());
-                            currentText = new CText("", res[0], res[1], textPaint,getTextWidth());
+                            currentText = new CText("", eventX, eventY, textPaint,getTextWidth());
                             onKeyBoardListener.onShowKeyBoard(res[0], res[1]);
                             mDrawableList.add(currentText);
                         }
