@@ -46,6 +46,7 @@ public class PinchZoomCanvasView extends ImageView implements IPhotoView {
     private ScaleType mPendingScaleType;
 
     private Context mContext;
+    public static final String TAG = "PinchZoomCanvasView" ;
 
     public PinchZoomCanvasView(Context context) {
         this(context, null);
@@ -621,7 +622,10 @@ public class PinchZoomCanvasView extends ImageView implements IPhotoView {
         Matrix restore = new Matrix();
 
         mAttacher.getDisplayMatrix().invert(restore);
-        Bitmap mCanvasBitmap = Bitmap.createBitmap(src, 0, 0, src.getWidth(), src.getHeight(),restore, true);
+
+
+        Bitmap mCanvasBitmap = Bitmap.createBitmap(src, (int)getDisplayRect().left, (int)getDisplayRect().top
+                , (int)(getDisplayRect().right-getDisplayRect().left), (int)(getDisplayRect().bottom-getDisplayRect().top),restore, true);
 
         destroyDrawingCache();
         // return the created bitmap.

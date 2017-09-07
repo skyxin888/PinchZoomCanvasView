@@ -55,6 +55,13 @@
         fab:menu_colorPressed="#2272CD"
         fab:menu_colorRipple="#62B2FF" >
         <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/save"
+            fab:fab_label="save"
+            style="@style/MenuButtonsStyle" />
+        <com.github.clans.fab.FloatingActionButton
             android:id="@+id/pen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
